@@ -24,6 +24,15 @@ body.landing {
      text-transform: uppercase;
      letter-spacing: 0.5rem;
      text-shadow: 1px 1px 0px rgb(58,23,63);
+     -webkit-transform: scaleX(0.9) translateY(3rem);
+     -moz-transform: scaleX(0.9) translateY(3rem);
+     transform: scaleX(0.9) translateY(3rem);
+     -webkit-transition: all 0.50s cubic-bezier(.17,.67,.81,.11);
+     -moz-transition: all 0.50s cubic-bezier(.17,.67,.81,.11);
+     transition: all 0.50s cubic-bezier(.17,.67,.81,.11);
+     -webkit-transition-delay: 0.2s;
+     -moz-transition-delay: 0.2s;
+     transition-delay: 0.2s;
  }
  
  .selling-points {
