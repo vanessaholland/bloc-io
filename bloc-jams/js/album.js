@@ -80,15 +80,61 @@ var setCurrentAlbum = function (album) {
         }
     };
 
-//var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
+var findParentByClassName = function (element, targetClass) {
+    var parentItem = element.parentElement;
+    while (parentItem.className != targetClass) {
+      if (parentItem.parentElement != null){
+        parentItem = parentItem.parentElement;
+      }
+    }
+    return parentItem;
+};
+
+var getSongItem = function (element) {
+  switch (element.className) {
+    case 'album-view-song-item':
+      return element.querySelector('.song-item-number');
+    case 'song-item-number':
+      return element;
+    case 'song-item-title':
+    case 'song-item-duration':
+      return findParentByClassName(element, 'album-view-song-item').querySelector('.song-item-number');
+    case 'album-song-button':
+    case 'ion-play':
+    case 'ion-pause':
+      return findParentByClassName(element, 'song-item-number');
+    default:
+      return;
+  }
+};
+
+var clickHandler = function(targetElement) {
+    var songItem = getSongItem(targetElement);
+    if (currentlyPlayingSong === null) {
+         songItem.innerHTML = pauseButtonTemplate;
+         currentlyPlayingSong = songItem.getAttribute('data-song-number');
+     } else if (currentlyPlayingSong === songItem.getAttribute('data-song-number')) {
+         songItem.innerHTML = playButtonTemplate;
+         currentlyPlayingSong = null;
+     } else if (currentlyPlayingSong !== songItem.getAttribute('data-song-number')) {
+         var currentlyPlayingSongElement = document.querySelector('[data-song-number="' + currentlyPlayingSong + '"]');
+         currentlyPlayingSongElement.innerHTML = currentlyPlayingSongElement.getAttribute('data-song-number');
+         songItem.innerHTML = pauseButtonTemplate;
+         currentlyPlayingSong = songItem.getAttribute('data-song-number');
+     }
+ };
+
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var songRows = document.getElementsByClassName('album-view-song-item');
+var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
+var currentlyPlayingSong = null;
 
 window.onload = function() {
      setCurrentAlbum(albumPicasso);
 
      var albums = [albumPicasso, albumMarconi, albumStyrofoam];
      var i = 1;
+
 
      document.getElementById("album-cover").addEventListener("click", function(event) {
          setCurrentAlbum(albums[i]);
@@ -101,13 +147,26 @@ window.onload = function() {
      document.getElementsByClassName('album-view-song-list')[0].addEventListener('mouseover', function(event) {
 
        if (event.target.parentElement.className === 'album-view-song-item') {
-         event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+         var songItem = getSongItem(event.target);
+         var songItemNumber = songItem.getAttribute('data-song-number');
+
+         if (songItemNumber !== currentlyPlayingSong) {
+           event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+         }
        }
      });
 
      for (var i = 0; i < songRows.length; i++) {
          songRows[i].addEventListener('mouseleave', function(event) {
-             this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
+           var songItem = getSongItem(event.target);
+           var songItemNumber = songItem.getAttribute('data-song-number');
+
+           if (songItemNumber !== currentlyPlayingSong) {
+               songItem.innerHTML = songItemNumber;
+           }
+         });
+         songRows[i].addEventListener('click', function(event) {
+             clickHandler(event.target);
          });
      }
  };
