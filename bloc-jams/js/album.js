@@ -301,4 +301,15 @@ $(document).ready(function() {
      $previousButton.click(previousSong);
      $nextButton.click(nextSong);
      $playPauseButton.click(togglePlayFromPlayerBar);
+     var albums = [albumPicasso, albumMarconi, albumStyrofoam];
+     var i = 1;
+
+
+     document.getElementById("album-cover").addEventListener("click", function(event) {
+         setCurrentAlbum(albums[i]);
+         i++;
+         if(i >= albums.length) {
+             i = 0;
+         }
+     });
  });
