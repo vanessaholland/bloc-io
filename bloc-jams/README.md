@@ -4,18 +4,12 @@
 <h3>Features include: </h3> 
 <br>
 <h4>Page Load Events</h4>
-<video width="320" height="240" controls>
-  <source src="https://goo.gl/photos/MZZBD6Y6gE6Cixsr9" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+<a href="https://goo.gl/photos/MZZBD6Y6gE6Cixsr9">On Load Events Demo</a>
 
 <h4>Click Event Listeners</h4>
 <p>For switching albums and toggling the play/pause status of songs.</p>
 
-<video width="320" height="240" controls>
-  <source src="https://goo.gl/photos/5SbwYuLWhMnrijdQ8" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+<a href="https://goo.gl/photos/5SbwYuLWhMnrijdQ8">Click Events Demo</a>
 
 <h4>Seek Bars for Duration and Volume</h4>
 <img src="https://lh3.googleusercontent.com/tvDdOpcAvI3dznTVm4kql4qsEpMRQTMcirtoW3h9YHlj-leUOZ0dkobGR8SKg2B59OX1hScPBCtNoMk08_oiSjE06w1JZjAtk-s8EQdxrPxFklPOz1yaGb687rnE3CpUoE6g4cUWpOYbU3WeRhxvGb1XuQC7LvCo142SfYha8DlmT_DSdddE_Sy05LHi8gyeQz4R0m0pvE648ux9bf-4JexFyE0uY-1WKnGjYZO0KOPvYaKx9282NDwFilD816oEwxgS65q7_d8YNzJKzc3KY98EXyLZnIKal8Yq3CxvWWmSibMedPCfqTg5IjdAoeXxjqBHm5wqdo8_PrKF_dpoC1LLJCUBoMD-rZtXnqlU9ej_1GNfyEr41PXn0vLWx4UxUUQ30pXRvqGpXBD9UFNdV1Ms4l12pRLXYlhL0zPlLBj7ruFLyPEr_8ZmcH2tJD4FNwTl2fKKHd0Xef2N6UCnKTE5WfGg9ZVtJ2kZ-bvSIi02Tx_jp9T2xqAI9QeKT17hFCQGZmciThC3Yl_JyqnC7xObknK-P9iVGRJUVQjnMjXegOZIgRjZ3d2pWEsFiE-A5n35hd1hQQmg4r80p2AokFBIpCPQgOre983yLLLqNg=w1148-h201-no" alt="player bar">
